@@ -5,7 +5,7 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          withEnv(["PATH+DOCKER=${tool 'docker'}"]) {
+          withEnv(["PATH+DOCKER=${tool 'docker'}/docker"]) {
             def image = docker.build("front-end:${env.BUILD_ID}")
           }
         }
