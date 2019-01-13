@@ -5,9 +5,10 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          docker.withTool("docker") {
-            def image = docker.build("front-end:${env.BUILD_ID}")
-          }
+          kubernetes.image().withName("example").build().fromPath(".")
+          #docker.withTool("docker") {
+          #  def image = docker.build("front-end:${env.BUILD_ID}")
+          #}
         }
       }
     }
